@@ -13,6 +13,8 @@
 		6895E4751CD921060020FF23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6895E4741CD921060020FF23 /* Assets.xcassets */; };
 		6895E4781CD921060020FF23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6895E4761CD921060020FF23 /* LaunchScreen.storyboard */; };
 		6895E4801CD9236C0020FF23 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895E47F1CD9236C0020FF23 /* ContactsTableViewController.swift */; };
+		6895E4A01CDCD8580020FF23 /* Contacts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895E49F1CDCD8580020FF23 /* Contacts.swift */; };
+		6895E4A21CE2404E0020FF23 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895E4A11CE2404E0020FF23 /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6895E4771CD921060020FF23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6895E4791CD921060020FF23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6895E47F1CD9236C0020FF23 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		6895E49F1CDCD8580020FF23 /* Contacts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts.swift; sourceTree = "<group>"; };
+		6895E4A11CE2404E0020FF23 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +64,8 @@
 				6895E46F1CD921060020FF23 /* ViewController.swift */,
 				6895E47F1CD9236C0020FF23 /* ContactsTableViewController.swift */,
 				6895E4711CD921060020FF23 /* Main.storyboard */,
+				6895E4A11CE2404E0020FF23 /* DetailViewController.swift */,
+				6895E49F1CDCD8580020FF23 /* Contacts.swift */,
 				6895E4741CD921060020FF23 /* Assets.xcassets */,
 				6895E4761CD921060020FF23 /* LaunchScreen.storyboard */,
 				6895E4791CD921060020FF23 /* Info.plist */,
@@ -138,7 +144,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6895E4A01CDCD8580020FF23 /* Contacts.swift in Sources */,
 				6895E4701CD921060020FF23 /* ViewController.swift in Sources */,
+				6895E4A21CE2404E0020FF23 /* DetailViewController.swift in Sources */,
 				6895E46E1CD921060020FF23 /* AppDelegate.swift in Sources */,
 				6895E4801CD9236C0020FF23 /* ContactsTableViewController.swift in Sources */,
 			);
@@ -290,6 +298,7 @@
 				6895E47E1CD921060020FF23 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

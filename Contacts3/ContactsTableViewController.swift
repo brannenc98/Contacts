@@ -10,16 +10,27 @@ import UIKit
 
 class ContactsTableViewController: UITableViewController {
 
+    var contacts:[Contact] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let jenny = Contact(phoneNumber: "867-5309")
+        let rich = Contact(name: "Rich", phoneNumber: "888-888-8888")
+        let mindy = Contact(name: "Mindy")
+        
+        self.contacts.append(jenny)
+        self.contacts.append(rich)
+        self.contacts.append(mindy)
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
+        let contact = self.contacts[indexPath.row]
+        let destination = segue.destinationViewController as! DetailViewController
+        destination.contact = contact
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -31,16 +42,27 @@ class ContactsTableViewController: UITableViewController {
         return 1
     }
 
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        // Return the number of rows in the section.
+        return self.contacts.count
     }
-
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel?.text = "A fine example of a UITableViewCell."
+        
+        let contact = self.contacts[indexPath.row]
+        
+        if let name = contact.name {
+            cell.textLabel?.text = name
+        } else {
+            cell.textLabel?.text = "No Name"
+        }
+        
         return cell
     }
+    }
+
     
 
     /*
@@ -88,4 +110,4 @@ class ContactsTableViewController: UITableViewController {
     }
     */
 
-}
+
