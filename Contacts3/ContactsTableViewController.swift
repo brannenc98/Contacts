@@ -15,9 +15,9 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let jenny = Contact(phoneNumber: "867-5309")
+        let jenny = Contact(name: "Jenny", phoneNumber: "346-867-5309")
         let rich = Contact(name: "Rich", phoneNumber: "888-888-8888")
-        let mindy = Contact(name: "Mindy")
+        let mindy = Contact(name: "Mindy", phoneNumber: "215-546-3254")
         
         self.contacts.append(jenny)
         self.contacts.append(rich)
