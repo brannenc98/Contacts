@@ -15,6 +15,8 @@ class ContactsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let moveButton = UIBarButtonItem(barButtonSystemItem: .Edit, target: self, action: Selector("toggleEdit"))
+        navigationItem.leftBarButtonItem = moveButton
         let jenny = Contact(name: "Jenny", phoneNumber: "346-867-5309")
         let rich = Contact(name: "Rich", phoneNumber: "888-888-8888")
         let mindy = Contact(name: "Mindy", phoneNumber: "215-546-3254")
@@ -24,11 +26,32 @@ class ContactsTableViewController: UITableViewController {
         self.contacts.append(mindy)
     }
     
+    func toggleEdit() {
+        tableView.setEditing(!tableView.editing, animated: true)
+    }
+    
+    override func tableView(tableView: UITableView, moveRowAtIndexPath sourceIndexPath: NSIndexPath, toIndexPath destinationIndexPath: NSIndexPath) {
+        let contactMoving = contacts.removeAtIndex(sourceIndexPath.row)
+        contacts.insert(contactMoving, atIndex: destinationIndexPath.row)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let indexPath = self.tableView.indexPathForCell(sender as! UITableViewCell)!
         let contact = self.contacts[indexPath.row]
         let destination = segue.destinationViewController as! DetailViewController
         destination.contact = contact
+    }
+    
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        if tableView.editing {
+            return .None
+        } else {
+            return .Delete
+        }
+    }
+    
+    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return false
     }
     
     override func didReceiveMemoryWarning() {
@@ -41,8 +64,17 @@ class ContactsTableViewController: UITableViewController {
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-
     
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            self.contacts.removeAtIndex(indexPath.row)
+            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+    }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows in the section.
         return self.contacts.count
